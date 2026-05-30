@@ -133,9 +133,9 @@ export default function Login() {
                   <label htmlFor="password" className="block text-sm font-medium text-neutral-heading">
                     Password
                   </label>
-                  <Link to="#" className="text-xs font-semibold text-tertiary hover:underline">
+                  {/* <Link to="#" className="text-xs font-semibold text-tertiary hover:underline">
                     Forgot password?
-                  </Link>
+                  </Link> */}
                 </div>
                 <input
                   id="password"
