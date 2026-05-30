@@ -101,7 +101,12 @@ html.light {
       radial-gradient(ellipse 40% 30% at 0% 100%, rgba(46, 58, 89, 0.04), transparent 50%);
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display text-neutral-heading font-semibold tracking-tight;
     transition: color 0.3s ease;
   }
@@ -122,7 +127,7 @@ html.light {
   }
 
   .max-w-container {
-    max-width: 70rem;
+    max-width: 80rem;
   }
 
   .shadow-card {
@@ -148,32 +153,97 @@ html.light {
 }
 
 /* TipTap Editor & Prose Styles */
-.prose-content h1 { @apply font-display text-3xl font-bold mt-8 mb-4; }
-.prose-content h2 { @apply font-display text-2xl font-semibold mt-6 mb-3; }
-.prose-content h3 { @apply font-display text-xl font-semibold mt-5 mb-2; }
-.prose-content p { @apply mb-4 text-neutral-body/90; }
-.prose-content ul { @apply list-disc pl-6 mb-4; }
-.prose-content ol { @apply list-decimal pl-6 mb-4; }
-.prose-content li { @apply mb-1; }
-.prose-content strong { @apply font-semibold text-neutral-heading; }
+.prose-content h1 {
+  @apply font-display text-3xl font-bold mt-8 mb-4;
+}
+
+.prose-content h2 {
+  @apply font-display text-2xl font-semibold mt-6 mb-3;
+}
+
+.prose-content h3 {
+  @apply font-display text-xl font-semibold mt-5 mb-2;
+}
+
+.prose-content p {
+  @apply mb-4 text-neutral-body/90;
+}
+
+.prose-content ul {
+  @apply list-disc pl-6 mb-4;
+}
+
+.prose-content ol {
+  @apply list-decimal pl-6 mb-4;
+}
+
+.prose-content li {
+  @apply mb-1;
+}
+
+.prose-content strong {
+  @apply font-semibold text-neutral-heading;
+}
+
 .prose-content blockquote {
   @apply border-l-[3px] border-secondary pl-5 italic my-6 text-neutral-body/75 font-display text-lg;
 }
-.prose-content a { @apply text-secondary underline decoration-secondary/30 underline-offset-2 hover:text-secondary-hover hover:decoration-secondary-hover; }
-.prose-content img { @apply rounded-lg my-6 max-w-full h-auto shadow-card; }
-.prose-content hr { @apply my-10 border-accent; }
-.prose-content pre { @apply bg-surface/40 rounded-lg p-4 my-4 overflow-x-auto text-sm border border-accent; }
-.prose-content code { @apply bg-surface/50 px-1.5 py-0.5 rounded text-sm font-mono text-secondary; }
-.prose-content pre code { @apply bg-transparent p-0 text-neutral-body; }
-.prose-content table { @apply w-full border-collapse my-6 text-sm rounded-lg overflow-hidden; }
-.prose-content th { @apply bg-surface/60 border border-accent px-3 py-2.5 text-left font-semibold text-neutral-heading; }
-.prose-content td { @apply border border-accent px-3 py-2.5; }
-.prose-content tr:nth-child(even) td { @apply bg-surface/30; }
 
-.ProseMirror table { @apply w-full border-collapse my-4; }
-.ProseMirror th { @apply bg-surface/60 border border-accent px-3 py-2 text-left font-semibold; }
-.ProseMirror td { @apply border border-accent px-3 py-2; }
-.ProseMirror img { @apply rounded-lg max-w-full h-auto my-2; }
+.prose-content a {
+  @apply text-secondary underline decoration-secondary/30 underline-offset-2 hover:text-secondary-hover hover:decoration-secondary-hover;
+}
+
+.prose-content img {
+  @apply rounded-lg my-6 max-w-full h-auto shadow-card;
+}
+
+.prose-content hr {
+  @apply my-10 border-accent;
+}
+
+.prose-content pre {
+  @apply bg-surface/40 rounded-lg p-4 my-4 overflow-x-auto text-sm border border-accent;
+}
+
+.prose-content code {
+  @apply bg-surface/50 px-1.5 py-0.5 rounded text-sm font-mono text-secondary;
+}
+
+.prose-content pre code {
+  @apply bg-transparent p-0 text-neutral-body;
+}
+
+.prose-content table {
+  @apply w-full border-collapse my-6 text-sm rounded-lg overflow-hidden;
+}
+
+.prose-content th {
+  @apply bg-surface/60 border border-accent px-3 py-2.5 text-left font-semibold text-neutral-heading;
+}
+
+.prose-content td {
+  @apply border border-accent px-3 py-2.5;
+}
+
+.prose-content tr:nth-child(even) td {
+  @apply bg-surface/30;
+}
+
+.ProseMirror table {
+  @apply w-full border-collapse my-4;
+}
+
+.ProseMirror th {
+  @apply bg-surface/60 border border-accent px-3 py-2 text-left font-semibold;
+}
+
+.ProseMirror td {
+  @apply border border-accent px-3 py-2;
+}
+
+.ProseMirror img {
+  @apply rounded-lg max-w-full h-auto my-2;
+}
 
 .ProseMirror {
   @apply min-h-[300px] outline-none;
