@@ -1,5 +1,5 @@
 import User from '../models/User.js';
-import { generateToken, cookieOptions } from '../utils/generateToken.js';
+import { generateToken, cookieOptions, isProd } from '../utils/generateToken.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
 
 const sanitizeUser = (user) => ({
@@ -60,7 +60,7 @@ export const login = asyncHandler(async (req, res) => {
 });
 
 export const logout = asyncHandler(async (req, res) => {
-  res.clearCookie('token', { httpOnly: true, sameSite: 'lax' });
+  res.clearCookie('token', { httpOnly: true, secure: isProd, sameSite: isProd ? 'none' : 'lax' });
   res.json({ message: 'Logged out successfully' });
 });
 
