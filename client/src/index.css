@@ -1,0 +1,185 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+:root {
+  /* Default Dark Mode (2nd color scheme) */
+  --primary: #B5F5D8;
+  --primary-hover: #A2ECD8;
+  --primary-text: #0D2B2B;
+  --secondary: #FF5F50;
+  --secondary-hover: #FF7B70;
+  --secondary-text: #121212;
+  --tertiary: #8B5CF6;
+  --neutral-heading: #FFFFFF;
+  --neutral-body: #A3A3A3;
+  --background: #121212;
+  --surface: #1E1E1E;
+  --accent: #2D2D2D;
+
+  /* Logo variables */
+  --logo-nib: #0D2B2B;
+  --logo-slit: #B5F5D8;
+  --logo-ripple-1: #FF5F50;
+  --logo-ripple-2: #0D2B2B;
+
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.25);
+  --shadow-card-hover: 0 12px 32px rgba(0, 0, 0, 0.4);
+  --shadow-nav: 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+html.light {
+  /* Light Mode (1st color scheme) */
+  --primary: #2E3A59;
+  --primary-hover: #232E4A;
+  --primary-text: #FFFFFF;
+  --secondary: #D27D59;
+  --secondary-hover: #FEA27B;
+  --secondary-text: #FFFFFF;
+  --tertiary: #F9F7F2;
+  --neutral-heading: #1A1A1A;
+  --neutral-body: #2D3139;
+  --background: #F9F7F2;
+  --surface: #FFFFFF;
+  --accent: #EAE6DF;
+
+  /* Logo variables */
+  --logo-nib: #F9F7F2;
+  --logo-slit: #924a2a;
+  --logo-ripple-1: #FEA27B;
+  --logo-ripple-2: #D27D59;
+
+  --shadow-card: 0 1px 2px rgba(24, 36, 66, 0.04), 0 8px 24px rgba(24, 36, 66, 0.06);
+  --shadow-card-hover: 0 4px 8px rgba(24, 36, 66, 0.06), 0 16px 40px rgba(24, 36, 66, 0.1);
+  --shadow-nav: 0 1px 0 rgba(24, 36, 66, 0.06);
+}
+
+@theme {
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-text: var(--primary-text);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-text: var(--secondary-text);
+  --color-tertiary: var(--tertiary);
+  --color-neutral-heading: var(--neutral-heading);
+  --color-neutral-body: var(--neutral-body);
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --shadow-card: var(--shadow-card);
+  --shadow-card-hover: var(--shadow-card-hover);
+  --shadow-nav: var(--shadow-nav);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-neutral-body font-sans leading-[1.7] antialiased;
+    background-image:
+      radial-gradient(ellipse 70% 50% at 0% 0%, rgba(13, 43, 43, 0.25), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(139, 92, 246, 0.15), transparent 50%),
+      radial-gradient(ellipse 50% 30% at 50% 50%, rgba(255, 95, 80, 0.02), transparent 40%);
+    background-attachment: fixed;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  html.light body {
+    background-image:
+      radial-gradient(ellipse 90% 60% at 50% -10%, rgba(46, 58, 89, 0.07), transparent 55%),
+      radial-gradient(ellipse 50% 40% at 100% 0%, rgba(210, 125, 89, 0.05), transparent 50%),
+      radial-gradient(ellipse 40% 30% at 0% 100%, rgba(46, 58, 89, 0.04), transparent 50%);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-neutral-heading font-semibold tracking-tight;
+    transition: color 0.3s ease;
+  }
+
+  ::selection {
+    background: rgba(255, 95, 80, 0.25);
+    color: var(--neutral-heading);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .max-w-reading {
+    max-width: 45rem;
+  }
+
+  .max-w-container {
+    max-width: 70rem;
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-card-hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .shadow-nav {
+    box-shadow: var(--shadow-nav);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .divider-fade {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+}
+
+/* TipTap Editor & Prose Styles */
+.prose-content h1 { @apply font-display text-3xl font-bold mt-8 mb-4; }
+.prose-content h2 { @apply font-display text-2xl font-semibold mt-6 mb-3; }
+.prose-content h3 { @apply font-display text-xl font-semibold mt-5 mb-2; }
+.prose-content p { @apply mb-4 text-neutral-body/90; }
+.prose-content ul { @apply list-disc pl-6 mb-4; }
+.prose-content ol { @apply list-decimal pl-6 mb-4; }
+.prose-content li { @apply mb-1; }
+.prose-content strong { @apply font-semibold text-neutral-heading; }
+.prose-content blockquote {
+  @apply border-l-[3px] border-secondary pl-5 italic my-6 text-neutral-body/75 font-display text-lg;
+}
+.prose-content a { @apply text-secondary underline decoration-secondary/30 underline-offset-2 hover:text-secondary-hover hover:decoration-secondary-hover; }
+.prose-content img { @apply rounded-lg my-6 max-w-full h-auto shadow-card; }
+.prose-content hr { @apply my-10 border-accent; }
+.prose-content pre { @apply bg-surface/40 rounded-lg p-4 my-4 overflow-x-auto text-sm border border-accent; }
+.prose-content code { @apply bg-surface/50 px-1.5 py-0.5 rounded text-sm font-mono text-secondary; }
+.prose-content pre code { @apply bg-transparent p-0 text-neutral-body; }
+.prose-content table { @apply w-full border-collapse my-6 text-sm rounded-lg overflow-hidden; }
+.prose-content th { @apply bg-surface/60 border border-accent px-3 py-2.5 text-left font-semibold text-neutral-heading; }
+.prose-content td { @apply border border-accent px-3 py-2.5; }
+.prose-content tr:nth-child(even) td { @apply bg-surface/30; }
+
+.ProseMirror table { @apply w-full border-collapse my-4; }
+.ProseMirror th { @apply bg-surface/60 border border-accent px-3 py-2 text-left font-semibold; }
+.ProseMirror td { @apply border border-accent px-3 py-2; }
+.ProseMirror img { @apply rounded-lg max-w-full h-auto my-2; }
+
+.ProseMirror {
+  @apply min-h-[300px] outline-none;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  @apply text-neutral-body/40 float-left h-0 pointer-events-none;
+  content: attr(data-placeholder);
+}
