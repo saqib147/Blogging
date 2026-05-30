@@ -53,7 +53,7 @@ export default function Search() {
   );
 
   useEffect(() => {
-    getCategoriesAndTags().then(({ data }) => setMeta(data)).catch(() => {});
+    getCategoriesAndTags().then(({ data }) => setMeta(data)).catch(() => { });
   }, []);
 
   useEffect(() => {
@@ -222,7 +222,7 @@ export default function Search() {
               )}
             </div>
           ) : (
-            <div className="grid sm:grid-cols-2 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {blogs.map((blog) => (
                 <PostCard key={blog._id} blog={blog} />
               ))}

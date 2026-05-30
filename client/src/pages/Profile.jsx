@@ -79,8 +79,8 @@ function UserCard({ person, currentUserId, onFollowToggle }) {
 // ─── Tab definitions ──────────────────────────────────────────────────────────
 const POST_TABS = [
   { id: 'published', label: 'Published', ownerOnly: false },
-  { id: 'liked',     label: 'Liked',     ownerOnly: true  },
-  { id: 'saved',     label: 'Saved',     ownerOnly: true  },
+  { id: 'liked', label: 'Liked', ownerOnly: true },
+  { id: 'saved', label: 'Saved', ownerOnly: true },
 ];
 const PEOPLE_TABS = [
   { id: 'followers', label: 'Followers' },
@@ -93,17 +93,17 @@ export default function Profile() {
   const { user: currentUser } = useAuth();
   const isOwner = currentUser?._id === id;
 
-  const [profile, setProfile]           = useState(null);
-  const [posts, setPosts]               = useState([]);
-  const [people, setPeople]             = useState([]);
-  const [activeTab, setActiveTab]       = useState('published');
-  const [loading, setLoading]           = useState(true);
-  const [tabLoading, setTabLoading]     = useState(false);
-  const [following, setFollowing]       = useState(false);
+  const [profile, setProfile] = useState(null);
+  const [posts, setPosts] = useState([]);
+  const [people, setPeople] = useState([]);
+  const [activeTab, setActiveTab] = useState('published');
+  const [loading, setLoading] = useState(true);
+  const [tabLoading, setTabLoading] = useState(false);
+  const [following, setFollowing] = useState(false);
   const [followLoading, setFollowLoading] = useState(false);
-  const [editing, setEditing]           = useState(false);
-  const [editForm, setEditForm]         = useState({ name: '', bio: '', avatar: '' });
-  const [saving, setSaving]             = useState(false);
+  const [editing, setEditing] = useState(false);
+  const [editForm, setEditForm] = useState({ name: '', bio: '', avatar: '' });
+  const [saving, setSaving] = useState(false);
 
   // Fetch profile header
   const fetchProfile = useCallback(() => {
@@ -144,8 +144,8 @@ export default function Profile() {
       }
       const fetchers = {
         published: () => getUserPosts(id),
-        liked:     () => getUserLikedPosts(id),
-        saved:     () => getUserBookmarkedPosts(id),
+        liked: () => getUserLikedPosts(id),
+        saved: () => getUserBookmarkedPosts(id),
       };
       fetchers[activeTab]()
         .then(({ data }) => setPosts(data))
@@ -209,8 +209,8 @@ export default function Profile() {
     return <div className="text-center py-20 text-neutral-body/60">Profile not found.</div>;
   }
 
-  const visiblePostTabs   = POST_TABS.filter((t) => !t.ownerOnly || isOwner);
-  const isPeopleTab       = activeTab === 'followers' || activeTab === 'following';
+  const visiblePostTabs = POST_TABS.filter((t) => !t.ownerOnly || isOwner);
+  const isPeopleTab = activeTab === 'followers' || activeTab === 'following';
 
   return (
     <div className="max-w-container mx-auto px-4 sm:px-6 py-8">
@@ -278,11 +278,10 @@ export default function Profile() {
                 <button
                   type="button"
                   onClick={() => setActiveTab('followers')}
-                  className={`px-3 py-1 rounded-full transition-colors ${
-                    activeTab === 'followers'
+                  className={`px-3 py-1 rounded-full transition-colors ${activeTab === 'followers'
                       ? 'bg-primary/10 text-primary font-medium'
                       : 'hover:bg-primary/8 text-neutral-body/70 hover:text-primary'
-                  }`}
+                    }`}
                 >
                   <span className="font-semibold text-neutral-heading">{profile.followersCount}</span>
                   {' '}followers
@@ -290,11 +289,10 @@ export default function Profile() {
                 <button
                   type="button"
                   onClick={() => setActiveTab('following')}
-                  className={`px-3 py-1 rounded-full transition-colors ${
-                    activeTab === 'following'
+                  className={`px-3 py-1 rounded-full transition-colors ${activeTab === 'following'
                       ? 'bg-primary/10 text-primary font-medium'
                       : 'hover:bg-primary/8 text-neutral-body/70 hover:text-primary'
-                  }`}
+                    }`}
                 >
                   <span className="font-semibold text-neutral-heading">{profile.followingCount}</span>
                   {' '}following
@@ -319,11 +317,10 @@ export default function Profile() {
               key={tab.id}
               type="button"
               onClick={() => setActiveTab(tab.id)}
-              className={`pb-3 px-4 text-sm font-medium transition-colors border-b-2 -mb-px whitespace-nowrap ${
-                activeTab === tab.id
+              className={`pb-3 px-4 text-sm font-medium transition-colors border-b-2 -mb-px whitespace-nowrap ${activeTab === tab.id
                   ? 'border-primary text-primary'
                   : 'border-transparent text-neutral-body/60 hover:text-neutral-heading'
-              }`}
+                }`}
             >
               {tab.label}
             </button>
@@ -337,11 +334,10 @@ export default function Profile() {
               key={tab.id}
               type="button"
               onClick={() => setActiveTab(tab.id)}
-              className={`pb-3 px-4 text-sm font-medium transition-colors border-b-2 -mb-px whitespace-nowrap ${
-                activeTab === tab.id
+              className={`pb-3 px-4 text-sm font-medium transition-colors border-b-2 -mb-px whitespace-nowrap ${activeTab === tab.id
                   ? 'border-secondary text-secondary'
                   : 'border-transparent text-neutral-body/60 hover:text-neutral-heading'
-              }`}
+                }`}
             >
               {tab.label}
               {tab.id === 'followers' && (
@@ -371,7 +367,7 @@ export default function Profile() {
             {activeTab === 'followers' ? 'No followers yet.' : 'Not following anyone yet.'}
           </div>
         ) : (
-          <div className="grid sm:grid-cols-2 gap-3">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {people.map((person) => (
               <UserCard
                 key={person._id}

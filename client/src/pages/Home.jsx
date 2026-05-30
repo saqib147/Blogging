@@ -78,7 +78,7 @@ export default function Home() {
                   </h2>
                   <div className="divider-fade flex-1" />
                 </div>
-                <div className="grid sm:grid-cols-2 gap-6">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {gridBlogs.map((blog) => (
                     <PostCard key={blog._id} blog={blog} />
                   ))}
