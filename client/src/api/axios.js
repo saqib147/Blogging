@@ -6,6 +6,20 @@ const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
+// Attach Authorization header from localStorage token when present (fallback)
+api.interceptors.request.use((config) => {
+  try {
+    const token = localStorage.getItem('token');
+    if (token && !config.headers?.Authorization) {
+      config.headers = config.headers || {};
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+  } catch (e) {
+    // ignore localStorage errors
+  }
+  return config;
+});
+
 api.interceptors.response.use(
   (response) => response,
   (error) => {

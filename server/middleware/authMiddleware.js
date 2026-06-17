@@ -3,7 +3,12 @@ import User from '../models/User.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
 
 export const protect = asyncHandler(async (req, res, next) => {
-  const token = req.cookies.token;
+  // Accept token from cookie OR Authorization header (Bearer) as a fallback
+  const headerToken = req.headers.authorization && req.headers.authorization.startsWith('Bearer ')
+    ? req.headers.authorization.split(' ')[1]
+    : null;
+
+  const token = req.cookies.token || headerToken;
 
   if (!token) {
     res.status(401);

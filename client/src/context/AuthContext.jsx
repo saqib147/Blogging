@@ -27,18 +27,30 @@ export function AuthProvider({ children }) {
 
   const login = async (credentials) => {
     const { data } = await authApi.login(credentials);
-    setUser(data);
+    // server now returns { user, token } — persist token as fallback
+    if (data?.token) {
+      try {
+        localStorage.setItem('token', data.token);
+      } catch (e) {}
+    }
+    setUser(data.user || data);
     return data;
   };
 
   const register = async (userData) => {
     const { data } = await authApi.register(userData);
-    setUser(data);
+    if (data?.token) {
+      try {
+        localStorage.setItem('token', data.token);
+      } catch (e) {}
+    }
+    setUser(data.user || data);
     return data;
   };
 
   const logout = async () => {
     await authApi.logout();
+    try { localStorage.removeItem('token'); } catch (e) {}
     setUser(null);
   };
 
